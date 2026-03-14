@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>online calci</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background-color:black;
+}
+
+.calculator{
+    background-color:black;
+    padding:20px;
+    box-shadow:0 0 10px cyan,
+               0 0 20px cyan,
+               0 0 40px cyan;
+    border-radius:20px;
+}
+
+.buttons button{
+    border:none;
+    border-radius:50%;
+    width:45px;
+    height:45px;
+    margin:5px;
+    color:white;
+    background:black;
+    box-shadow:0 0 5px cyan,
+               0 0 10px cyan,
+               0 0 15px cyan;
+}
+
+#display{
+    width:100%;
+    margin-bottom:15px;
+    height:35px;
+    border-radius:10px;
+    background:black;
+    box-shadow:0 0 1px cyan,
+               0 0 5px cyan,
+               0 0 10px cyan;
+    color:white;
+    text-align:right;
+    padding:5px;
+}
+
+
+@media screen and (max-width:600px){
+    .calculator{
+        width:220px;
+        padding:15px;
+    }
+
+    .buttons button{
+        width:40px;
+        height:40px;
+        font-size:14px;
+    }
+}
+
+@media screen and (min-width:1025px){
+    .calculator{
+        width:300px;
+    }
+
+    .buttons button{
+        width:50px;
+        height:50px;
+        font-size:18px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+<input type="text" id="display" readonly>
+
+<div class="buttons">
+
+<button onclick="clearDisplay()">AC</button>
+<button onclick="deleteLast()">DEL</button>
+<button onclick="press('%')">%</button>
+<button onclick="press('/')">/</button>
+
+<br>
+
+<button onclick="press('7')">7</button>
+<button onclick="press('8')">8</button>
+<button onclick="press('9')">9</button>
+<button onclick="press('*')">*</button>
+
+<br>
+
+<button onclick="press('4')">4</button>
+<button onclick="press('5')">5</button>
+<button onclick="press('6')">6</button>
+<button onclick="press('-')">-</button>
+
+<br>
+
+<button onclick="press('1')">1</button>
+<button onclick="press('2')">2</button>
+<button onclick="press('3')">3</button>
+<button onclick="press('+')">+</button>
+
+<br>
+
+<button onclick="press('00')">00</button>
+<button onclick="press('0')">0</button>
+<button onclick="press('.')">.</button>
+<button onclick="calculate()">=</button>
+
+</div>
+</div>
+
+<script>
+
+let display=document.getElementById("display");
+
+function press(value){
+    display.value += value;
+}
+
+function calculate(){
+    display.value = eval(display.value);
+}
+
+function clearDisplay(){
+    display.value="";
+}
+
+function deleteLast(){
+    display.value = display.value.slice(0,-1);
+}
+
+</script>
+
+</body>
+</html>
